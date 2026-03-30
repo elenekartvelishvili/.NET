@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp8
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, int> dict = new Dictionary<string, int> {
+              {"A", 10},
+             {"B", 20},
+             {"C", 10}
+              };
+
+            Dictionary<int, List<string>> keyValuePairs = new Dictionary<int, List<string>>();
+            foreach (var item in dict)
+            {
+
+                int valuetokey = item.Value;
+                string keytovalue = item.Key;
+
+                if (keyValuePairs.ContainsKey(valuetokey))
+                {
+                    keyValuePairs[valuetokey].Add(keytovalue);
+                }
+                else
+                {
+                    keyValuePairs.Add(valuetokey, new List<string> { keytovalue });
+                }
+            }
+
+
+                foreach (var kvp in keyValuePairs)
+                {
+                    Console.WriteLine(kvp.Key + " : " + string.Join(", ", kvp.Value));
+                }
+
+
+
+                Console.ReadKey();
+            
+        }
+
+    }
+}
